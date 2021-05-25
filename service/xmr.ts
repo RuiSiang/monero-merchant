@@ -12,7 +12,7 @@ export default class Xmr {
   }
   private xmrTransport = new HTTPTransport(
     `http://${config.crypto.host || 'localhost'}:${
-      config.crypto.port || '18090'
+      config.crypto.port || '18082'
     }/json_rpc`
   )
   private xmrClient = new Client(new RequestManager([this.xmrTransport]))

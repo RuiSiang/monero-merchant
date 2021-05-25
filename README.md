@@ -1,4 +1,8 @@
 # Monero Merchant
+
+[![nodejs-ci](https://github.com/RuiSiang/PoW-Shield/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/nodejs-ci.yml)
+[![njsscan sarif](https://github.com/RuiSiang/PoW-Shield/actions/workflows/njsscan-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/njsscan-analysis.yml)
+[![CodeQL](https://github.com/RuiSiang/PoW-Shield/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/codeql-analysis.yml)
 ## About
 Monero Merchant is a RESTful API based on the official Monero wallet RPC. This project is mainly for merchants who hope to accept Monero as payment, which is currently the most robust and privacy-oriented cryptocurrency with extremely low transaction fees.
 ## Prerequisites
@@ -19,6 +23,10 @@ Configure settings by editting config.ts, options are as follows
 + minConfirmations: minimum number of confirmations to consider as received
 + invoiceExpiry: time (seconds) until invoice expires
 
+Test Config and Code Integrity
+```
+npm run test
+```
 Build and Run
 ```
 npm run build
@@ -39,8 +47,8 @@ Interactive Swagger docs at /swagger-html and /swagger-json
 XMR address: 
 8BCaS8k6ag34JwruWhNHRBFwucWgYP7UfGXEMovdgLvtevoPps1XFipK4Fw2Kh5hPvLL1dBnpD6UKXWK8v8zFeVsPAXpAZG
 ## Todos
-+ unit test
-+ api key authentication
-+ additional endpoints
++ api key authentication to add security
++ unit test method for mocking real wallet rpc to increase coverage
++ additional endpoints (new features)
 
 Please feel free to provide suggestions and feature requests
