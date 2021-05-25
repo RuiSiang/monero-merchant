@@ -19,6 +19,10 @@ Configure settings by editting config.ts, options are as follows
 + minConfirmations: minimum number of confirmations to consider as received
 + invoiceExpiry: time (seconds) until invoice expires
 
+Test Config and Code Integrity
+```
+npm run test
+```
 Build and Run
 ```
 npm run build

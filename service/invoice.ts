@@ -8,7 +8,10 @@ import Xmr from './xmr'
 import XmrMock from './xmr-mock'
 import { Invoice } from './orm'
 
-const xmr = config.crypto.mock ? XmrMock.getInstance() : Xmr.getInstance()
+const xmr =
+  config.crypto.mock || process.env.NODE_ENV === 'test'
+    ? XmrMock.getInstance()
+    : Xmr.getInstance()
 
 export const newInvoice = async (
   amount: number,

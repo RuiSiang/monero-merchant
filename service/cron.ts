@@ -7,9 +7,12 @@ import Xmr from './xmr'
 import XmrMock from './xmr-mock'
 import { Invoice } from './orm'
 
-const xmr = config.crypto.mock ? XmrMock.getInstance() : Xmr.getInstance()
+const xmr =
+  config.crypto.mock || process.env.NODE_ENV === 'test'
+    ? XmrMock.getInstance()
+    : Xmr.getInstance()
 
-const scanInvoices = new CronJob('0 */2 * * * *', async () => {
+const scanInvoices = new CronJob('*/30 * * * * *', async () => {
   try {
     const invoices = await getRepository(Invoice)
       .createQueryBuilder()
@@ -45,7 +48,8 @@ const scanInvoices = new CronJob('0 */2 * * * *', async () => {
     console.log(`Error scanning invoices: ${err}`)
   } finally {
     await getRepository(Invoice)
-      .createQueryBuilder().update()
+      .createQueryBuilder()
+      .update()
       .where(`expiry < DATETIME(CURRENT_TIMESTAMP)`)
       .set({ status: 'Expired' })
       .execute()
