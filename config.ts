@@ -1,5 +1,5 @@
 const connection = {
-  baseUrl: 'http://localhost:3000', // base url of the api, change this to fit your domain name
+  baseUrl: 'http://127.0.0.1:3000', // base url of the api, change this to fit your domain name
   port: 3000, // port for monero merchant to listen on
 }
 
