@@ -32,7 +32,7 @@
     "typeorm": "^0.2.32"
   },
   "devDependencies": {
-    "@types/cron": "1.7.2",
+    "@types/cron": "1.7.3",
     "@types/koa": "2.13.3",
     "@types/koa-bodyparser": "4.3.1",
     "@types/koa-cors": "0.0.0",
