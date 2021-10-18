@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  monero-merchant:
+    container_name: monero-merchant
+    image: ruisiang/monero-merchant
+    environment:
+      - 'PORT=3000'
+      - 'BASE_URL=http://127.0.0.1:3000'
+      - 'PORT=3000'
+      - 'CRYPTO_MOCK=false'
+      - 'CRYPTO_HOST=127.0.0.1'
+      - 'CRYPTO_PORT=18082'
+      - 'MIN_CONFIRMATIONS=2'
+      - 'INVOICE_EXPIRY=7200'
+    ports:
+      - '3000:3000'
+
+  #############################################
+  # You should also start a Monero Wallet RPC #
+  #############################################
+
+  # monero-wallet-rpc configuration
+  # (you set it without Docker of course)
