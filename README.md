@@ -14,14 +14,14 @@ Clone repo and install dependencies
 git clone https://github.com/RuiSiang/monero-merchant
 npm install
 ```
-Configure settings by editting config.ts, options are as follows
-+ baseUrl: base url of the api, change this to fit your domain name
-+ port: port for monero merchant to listen on
-+ mock: whether to use stub wallet, for testing use
-+ host: Monero wallet RPC hostname
-+ port: Monero wallet RPC port
-+ minConfirmations: minimum number of confirmations to consider as received
-+ invoiceExpiry: time (seconds) until invoice expires
+Configure settings by editting `.env.example` and renaming it to `.env`, options are as follows
++ BASE_URL: base url of the api, change this to fit your domain name
++ PORT: port for monero merchant to listen on
++ CRYPTO_MOCK: whether to use stub wallet, for testing use
++ CRYPTO_HOST: Monero wallet RPC hostname
++ CRYPTO_PORT: Monero wallet RPC port
++ MIN_CONFIRMATIONS: minimum number of confirmations to consider as received
++ INVOICE_EXPIRY: time (seconds) until invoice expires
 
 Test Config and Code Integrity
 ```
@@ -32,6 +32,7 @@ Build and Run
 npm run build
 npm start
 ```
+If you wish to run monero-merchant with Docker, see docker-compose.example.yaml for more information
 ## Methods
 GET /new
 + query: amount, description, refund
