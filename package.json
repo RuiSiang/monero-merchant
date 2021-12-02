@@ -27,7 +27,7 @@
     "koa-cors": "0.0.16",
     "koa-swagger-decorator": "^1.3.0",
     "randomstring": "^1.2.1",
-    "round-to": "^5.0.0",
+    "round-to": "^6.0.0",
     "sqlite3": "^5.0.0",
     "typeorm": "^0.2.32",
     "validator": "^13.6.0"
