@@ -64,18 +64,36 @@ describe('New invoice', () => {
     const { status, response } = await newInvoice(
       0.1,
       'test description',
-      '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+      '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     )
     expect(status).toEqual(200)
     expect(typeof response).toEqual('object')
     expect((<any>response).id).toHaveLength(16)
     expect((<any>response).address).toHaveLength(106)
   })
-  it('should reject wrong address format', async () => {
+  it('should reject wrong address format (invalid characters)', async () => {
     const { status, response } = await newInvoice(
       0.1,
       'test description',
-      '9asdfasdf'
+      '4PInvD18P456f4KJUBKPS3Rqa97LrTaeqJ5NFYmjQM6nVoz6TBv4rJ24GZk883BNo22fAKbr8BSuTjhQC6K7DsSJFa8SHDs'
+    )
+    expect(status).toEqual(400)
+    expect(response).toEqual('Invalid refund address format')
+  })
+  it('should reject wrong address format (wrong subaddress length)', async () => {
+    const { status, response } = await newInvoice(
+      0.1,
+      'test description',
+      '87bnvD18P456f4KJUBKPS3Rqa97LrTaeqJ5NFYmjQM6nVoz6TBv4rJ24GZk883BNo22fAKbr8BSuTjhQC6K7DsSJFa8SHDsFa8SHDsSHDS'
+    )
+    expect(status).toEqual(400)
+    expect(response).toEqual('Invalid refund address format')
+  })
+  it('should reject wrong format (wrong address length)', async () => {
+    const { status, response } = await newInvoice(
+      0.1,
+      'test description',
+      '87bnvD18P456f4KJUBKPS3Rqa97LrTaeqJ5NFYmjQM6nVoz6TBv4rJ24GZk883BNo22fAKbr8BSuTjhQC6K7DsSJFa8S'
     )
     expect(status).toEqual(400)
     expect(response).toEqual('Invalid refund address format')
@@ -84,7 +102,7 @@ describe('New invoice', () => {
     const { status, response } = await newInvoice(
       -1,
       'test description',
-      '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+      '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     )
     expect(status).toEqual(400)
     expect(response).toEqual('Amount must be larger than 0')
@@ -97,7 +115,7 @@ describe('Invoice info', () => {
       await newInvoice(
         0.1,
         'test description',
-        '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
       )
     )).response.id
     const { status, response } = await invoiceInfo(id)
@@ -107,7 +125,7 @@ describe('Invoice info', () => {
     expect((<any>response).amount).toEqual('0.1')
     expect((<any>response).address).toHaveLength(106)
     expect((<any>response).refund).toEqual(
-      '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+      '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     )
     expect((<any>response).expiry).toMatch(
       /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/
@@ -127,14 +145,14 @@ describe('Invoice cron', () => {
       await newInvoice(
         0.1,
         'test description',
-        '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
       )
     )).response.id
     const id2 = (<any>(
       await newInvoice(
         0.5,
         'test description',
-        '4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        '4AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
       )
     )).response.id
     expect((await invoiceInfo(id1)).response.status).toEqual('Pending')
