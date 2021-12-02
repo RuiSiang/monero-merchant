@@ -25,9 +25,8 @@ export const newInvoice = async (
   if (
     refund &&
     !(
-      (refund.charAt(0) == '4' &&
-        (refund.length == 95 || refund.length == 106)) ||
-      (refund.charAt(0) == '8' && refund.length == 95)
+      refund.match(/^[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}$/) ||
+      refund.match(/^4[0-9AB][1-9A-HJ-NP-Za-km-z]{104}$/)
     )
   ) {
     return { status: 400, response: 'Invalid refund address format' }
