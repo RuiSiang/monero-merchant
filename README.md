@@ -12,6 +12,8 @@ Monero Merchant is a RESTful API based on the official Monero wallet RPC. This p
 + [nodejs](https://nodejs.org/en/download/) is installed
 + [monero-wallet-rpc](https://www.getmonero.org/downloads/#cli) is running
 ## Installation
+Docker image available on [Docker Hub](https://hub.docker.com/r/ruisiang/monero-merchant)
+
 Clone repo and install dependencies
 ```
 git clone https://github.com/RuiSiang/monero-merchant
