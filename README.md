@@ -1,8 +1,11 @@
 # Monero Merchant
 
-[![nodejs-ci](https://github.com/RuiSiang/PoW-Shield/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/nodejs-ci.yml)
-[![njsscan sarif](https://github.com/RuiSiang/PoW-Shield/actions/workflows/njsscan-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/njsscan-analysis.yml)
-[![CodeQL](https://github.com/RuiSiang/PoW-Shield/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/codeql-analysis.yml)
+[![nodejs-ci](https://github.com/RuiSiang/monero-merchant/actions/workflows/nodejs-ci.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/nodejs-ci.yml)
+[![njsscan sarif](https://github.com/RuiSiang/monero-merchant/actions/workflows/njsscan-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/njsscan-analysis.yml)
+[![CodeQL](https://github.com/RuiSiang/monero-merchant/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/RuiSiang/monero-merchant/actions/workflows/codeql-analysis.yml)
+![GitHub repo size](https://img.shields.io/github/repo-size/ruisiang/monero-merchant?color=orange)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/ruisiang/monero-merchant/latest?label=docker%20image%20size)](https://hub.docker.com/r/ruisiang/monero-merchant)
+[![](https://images.microbadger.com/badges/version/ruisiang/monero-merchant.svg)](https://hub.docker.com/r/ruisiang/monero-merchant)
 ## About
 Monero Merchant is a RESTful API based on the official Monero wallet RPC. This project is mainly for merchants who hope to accept Monero as payment, which is currently the most robust and privacy-oriented cryptocurrency with extremely low transaction fees.
 ## Prerequisites
