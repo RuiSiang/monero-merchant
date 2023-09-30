@@ -21,7 +21,7 @@
   "homepage": "https://github.com/RuiSiang/monero-merchant#readme",
   "dependencies": {
     "@open-rpc/client-js": "^1.6.3",
-    "cron": "^2.0.0",
+    "cron": "^3.0.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-cors": "0.0.16",
