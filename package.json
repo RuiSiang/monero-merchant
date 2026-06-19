@@ -29,7 +29,7 @@
     "koa-swagger-decorator": "^1.8.0",
     "randomstring": "^1.2.1",
     "round-to": "^5.0.0",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^6.0.0",
     "typeorm": "^0.3.0",
     "validator": "^13.6.0"
   },
